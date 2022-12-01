@@ -9,7 +9,6 @@ class App extends Component {
     this.state = {
       movies: movieData.movies
     }
-    console.log('APP', this.state.movies)
   }
 
   render() {

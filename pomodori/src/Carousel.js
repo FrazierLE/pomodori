@@ -1,16 +1,20 @@
 import React from 'react'
-import MovieInfo from './MovieInfo'
+import MovieCard from './MovieCard'
 
 function Carousel(props) {
-  const movieDisplay = props.map(movie => {
-    <MovieInfo 
-      key={movie.id}
-      id={movie.id}
-      poster={movie.poster_path}
-    />
+  const movieDisplay = props.movies.map(movie => {
+    return(
+      <MovieCard 
+        key={movie.id}
+        id={movie.id}
+        poster={movie.poster_path}
+        title={movie.title}
+      />
+    )
   })
+
   return(
-    <div>
+    <div className='movie-container'>
       {movieDisplay}
     </div>
   )
