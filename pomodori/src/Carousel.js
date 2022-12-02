@@ -3,7 +3,6 @@ import MovieCard from './MovieCard'
 import './Carousel.css'
 
 function Carousel({movies, seeMovie}) {
-  console.log('seeMovie', seeMovie)
   const movieDisplay = movies.map(movie => {
     return(
       <MovieCard 
