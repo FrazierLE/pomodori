@@ -1,21 +1,26 @@
-import React from 'react'
-import MovieInfo from './MovieInfo'
+import React, { useRef } from 'react'
+import MovieCard from './MovieCard'
+import './Carousel.css'
 
 function Carousel(props) {
-  const movieDisplay = props.map(movie => {
-    <MovieInfo 
-      key={movie.id}
-      id={movie.id}
-      poster={movie.poster_path}
-    />
+  const scrollToRef = useRef();
+  const movieDisplay = props.movies.map(movie => {
+    return(
+      <MovieCard 
+        key={movie.id}
+        id={movie.id}
+        poster={movie.poster_path}
+        title={movie.title}
+      />
+    )
   })
+
   return(
-    <div>
-      {movieDisplay}
+    <div className='movie-container'>
+        {movieDisplay}
     </div>
   )
 }
 
 export default Carousel
-
 
