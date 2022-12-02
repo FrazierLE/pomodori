@@ -11,15 +11,20 @@ class App extends Component {
       movies: [],
       movie: ''
     }
+    this.goHome = this.goHome.bind(this)
   }
 
   componentDidMount() {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
     .then(response => response.json())
     .then(data => {
-      this.setState({ movies: data.movies })
+      this.setState({ movies: data.movies})
     })  
   }
+
+ goHome() {
+  this.setState({ movie: '' })
+ }
 
   seeMovie = (id) => {
     const selectedMovie = this.state.movies.find(movie => movie.id === id);
@@ -30,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='title'>Pomodori</h1>
-        {this.state.movie ? <MovieInfo movie={this.state.movie} /> : <Carousel movies={this.state.movies} seeMovie={this.seeMovie}/>}
+        {this.state.movie ? <MovieInfo movie={this.state.movie} buttonClick={this.goHome}/> : <Carousel movies={this.state.movies} seeMovie={this.seeMovie}/>}
       </div>
     );
   }

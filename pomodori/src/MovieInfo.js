@@ -5,6 +5,7 @@ const MovieInfo = (props) => {
     return (
         <section className="movieInfo">
             <img src={props.movie.backdrop_path} alt={props.movie.title} width="500" height="600" />
+            <button onClick={props.buttonClick}>Home</button>
             <section className='movieInfoTxt'>
                 <img src={props.movie.poster_path} alt={props.movie.title} width="500" height="600" />
                 <h1>{props.movie.title}</h1>
