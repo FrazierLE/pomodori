@@ -17,10 +17,7 @@ function Carousel(props) {
 
   return(
     <div className='movie-container'>
-      <button onClick={() => scrollToRef.current.scrollIntoView()}>
-        click
-      </button>
-      <div ref={scrollToRef}>{movieDisplay}</div>
+        {movieDisplay}
     </div>
   )
 }
