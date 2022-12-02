@@ -9,7 +9,8 @@ class App extends Component {
     super() 
     this.state = {
       movies: [],
-      movie: ''
+      movie: '',
+      error: ''
     }
     this.goHome = this.goHome.bind(this)
   }
@@ -19,6 +20,10 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       this.setState({ movies: data.movies})
+    })
+    .catch(error => {
+      console.log(error)
+      this.setState({error: 'Something went wrong. Please try again later'})
     })  
   }
 
@@ -36,6 +41,7 @@ class App extends Component {
       <div className="App">
         <h1 className='title'>Pomodori</h1>
         {this.state.movie ? <MovieInfo movie={this.state.movie} buttonClick={this.goHome}/> : <Carousel movies={this.state.movies} seeMovie={this.seeMovie}/>}
+        {this.state.error && <h2>{this.state.error}</h2>}
       </div>
     );
   }
