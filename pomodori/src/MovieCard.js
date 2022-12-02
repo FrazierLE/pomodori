@@ -1,9 +1,14 @@
 import React from 'react'
+import './MovieCard.css'
 
 function MovieCard({id, poster, title}) {
   return(
     <div>
-      <img src={poster} alt={title} width="500" height="600" />
+      <ul>
+        <li className='card'>
+          <img src={poster} alt={title} width="500" height="600" />
+        </li>
+      </ul>
     </div>
   )
 }

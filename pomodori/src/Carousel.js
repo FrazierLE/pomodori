@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import MovieCard from './MovieCard'
+import './Carousel.css'
 
 function Carousel(props) {
+  const scrollToRef = useRef();
   const movieDisplay = props.movies.map(movie => {
     return(
       <MovieCard 
@@ -15,11 +17,13 @@ function Carousel(props) {
 
   return(
     <div className='movie-container'>
-      {movieDisplay}
+      <button onClick={() => scrollToRef.current.scrollIntoView()}>
+        click
+      </button>
+      <div ref={scrollToRef}>{movieDisplay}</div>
     </div>
   )
 }
 
 export default Carousel
-
 

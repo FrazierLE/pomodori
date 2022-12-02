@@ -1,0 +1,5 @@
+.movie-container {
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 24px;
+  scroll-snap-align: start;
+}

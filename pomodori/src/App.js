@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Pomodori</h1>
+        <h1 className='title'>Pomodori</h1>
         <Carousel movies={this.state.movies}/>
       </div>
     );
