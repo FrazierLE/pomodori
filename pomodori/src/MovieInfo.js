@@ -1,15 +1,15 @@
 import React from 'react';
 import './MovieInfo.css';
 
-const MovieInfo = ({ id, poster_path, backdrop_path, title, average_rating, release_date }) => {
+const MovieInfo = (props) => {
     return (
         <section className="movieInfo">
-            <img src={backdrop_path} alt={title} width="500" height="600" />
+            <img src={props.movie.backdrop_path} alt={props.movie.title} width="500" height="600" />
             <section className='movieInfoTxt'>
-                <img src={poster_path} alt={title} width="500" height="600" />
-                <h1>{title}</h1>
-                <h2>{release_date}</h2>
-                <h3>{average_rating}</h3>
+                <img src={props.movie.poster_path} alt={props.movie.title} width="500" height="600" />
+                <h1>{props.movie.title}</h1>
+                <h2>Release Date: {props.movie.release_date}</h2>
+                <h3>Average Rating: {props.movie.average_rating}</h3>
             </section>
         </section>
     )
