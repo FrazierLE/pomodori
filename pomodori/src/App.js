@@ -24,7 +24,7 @@ class App extends Component {
     .catch(error => {
       console.log(error)
       this.setState({error: 'Something went wrong. Please try again later'})
-    })  
+    })
   }
 
  goHome() {
@@ -32,8 +32,14 @@ class App extends Component {
  }
 
   seeMovie = (id) => {
-    const selectedMovie = this.state.movies.find(movie => movie.id === id);
-    this.setState({ movie: selectedMovie });
+    // const selectedMovie = this.state.movies.find(movie => movie.id === id);
+    console.log('id', id)
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id.toString()}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log('data', data)
+      this.setState({ movie: data.movie })
+    })
   }
 
   render() {
