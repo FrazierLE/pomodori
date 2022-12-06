@@ -2,6 +2,7 @@ import React from 'react';
 import './MovieInfo.css';
 
 const MovieInfo = (props) => {
+    console.log('PROPS', props)
     return (
         <section className="movie-info">
             <section className="all-movie-info">

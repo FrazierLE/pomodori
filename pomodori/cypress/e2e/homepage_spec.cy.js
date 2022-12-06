@@ -16,8 +16,13 @@ describe('Pomodori homepage flows', () => {
       cy.get('li.card').find('img').should('have.css', 'height', '600px')
 
       cy.get('li[class=card]').eq(0).find('img').url('https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg')
+      cy.get('li[class=card]').eq(0).find('img').should('have.attr', 'alt', 'Money Plane')
+
       cy.get('li[class=card]').eq(1).find('img').url('https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg')
+      cy.get('li[class=card]').eq(1).find('img').should('have.attr', 'alt', 'Mulan')
+
       cy.get('li[class=card]').eq(2).find('img').url('https://image.tmdb.org/t/p/original//uOw5JD8IlD546feZ6oxbIjvN66P.jpg')
+      cy.get('li[class=card]').eq(2).find('img').should('have.attr', 'alt', 'Rogue')
     })
   })
 });
