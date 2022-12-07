@@ -40,27 +40,32 @@
     padding-bottom: 100px;
 }
 
-
-
 .movie-info-txt {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
 }
 
-h1 {
-    font-size: 4vh;
-
+.movie-title {
+    font-size: 3vh;
+    margin-bottom: -4px;
 }
 
-h2 {
+.genres {
+    font-size: 1.25vh;
+}
+
+.overview {
     font-size: 2vh;
+    width: 53vw;
+    border: solid white;
+    padding: 30px;
+
 }
 
-h3 {
-    font-size: 2vh;
-    margin-bottom: 2vh;
-    padding-bottom: 10px;
+.released {
+    font-size: 1.5vh;
 }
 
 .glow-hover {
