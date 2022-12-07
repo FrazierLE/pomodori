@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './App.css';
-import movieData from './movieData'
 import Carousel from './Carousel'
 import MovieInfo from './MovieInfo'
 
@@ -33,9 +32,9 @@ class App extends Component {
 
   seeMovie = (id) => {
     fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id.toString()}`)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({ movie: data.movie })
+      .then(response => response.json())
+      .then(data => {
+    this.setState({ movie: data.movie })
     })
   }
 
