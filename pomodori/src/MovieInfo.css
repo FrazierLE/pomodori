@@ -36,7 +36,7 @@
     width: 17vw;
     height: 25vw;
     top: 35vw;
-    left: -13vw;
+    left: -14vw;
     padding-bottom: 100px;
 }
 
@@ -48,24 +48,26 @@
 }
 
 .movie-title {
-    font-size: 3vh;
+    font-size: 4vh;
     margin-bottom: -4px;
 }
 
-.genres {
-    font-size: 1.25vh;
+h2 {
+    margin-bottom: 5px;
+    font-size: 2.5vh;
+}
+
+.tagline {
+    font-size: 3npvh;
 }
 
 .overview {
     font-size: 2vh;
-    width: 53vw;
+    width: 700px;
     border: solid white;
     padding: 30px;
+    margin-top: 60px;
 
-}
-
-.released {
-    font-size: 1.5vh;
 }
 
 .glow-hover {

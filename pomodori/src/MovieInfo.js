@@ -18,7 +18,13 @@ const MovieInfo = (props) => {
         officialMinRuntime = `${minNum} minute`
     }
 
-    let rating = props.movie.average_rating.toFixed(2)
+    let rating = Math.round(props.movie.average_rating/10*100)
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+      });
+    let bcost = formatter.format(props.movie.budget)
+    let rcost = formatter.format(props.movie.revenue)
     return (
         <section className="movie-info">
             <section className="all-movie-info">
@@ -28,14 +34,14 @@ const MovieInfo = (props) => {
                 </section>
                     <section className="movie-info-txt">
                         <h1 style={{display: !props.movie.title &&  'none'}} className='movie-title'>{props.movie.title}</h1>
-                        <h3 style={{display: !props.movie.tagline &&  'none'}}>{props.movie.tagline}</h3>
-                        <h4 style={{display: !props.movie.genres.length &&  'none'}} className="genres">{genres}</h4>
+                        <h2 style={{display: !props.movie.tagline &&  'none'}} className="tagline">"{props.movie.tagline}"</h2>
+                        <h2 style={{display: !props.movie.average_rating &&  'none'}} className="rating">{`🍅 ${rating}% 🍅`}</h2>
+                        <h2 style={{display: !props.movie.runtime &&  'none'}} className="runtime">{`${officialHoursRuntime} ${officialMinRuntime}`}</h2>
                         <h2 style={{display: !props.movie.release_date &&  'none'}} className="released"> {props.movie.release_date}</h2>
-                        <h3 style={{display: !props.movie.budget &&  'none'}}>Budget: ${props.movie.budget}</h3>
-                        <h3 style={{display: !props.movie.revenue &&  'none'}}>Revenue: ${props.movie.revenue}</h3>
-                        <h3 style={{display: !props.movie.runtime &&  'none'}}>{`${officialHoursRuntime} ${officialMinRuntime}`}</h3>
-                        <h3 style={{display: !props.movie.average_rating &&  'none'}}>Average Rating: {rating}</h3>
-                        <p style={{display: !props.movie.overview &&  'none'}} className="overview">Overview:{props.movie.overview}</p>
+                        <h2 style={{display: !props.movie.genres.length &&  'none'}} className="genres">{genres}</h2>
+                        <h2 style={{display: !props.movie.budget &&  'none'}}>Budget: {bcost}</h2>
+                        <h2 style={{display: !props.movie.revenue &&  'none'}}>Revenue: {rcost}</h2>
+                        <p style={{display: !props.movie.overview &&  'none'}} className="overview">{props.movie.overview}</p>
                     </section>
             </section>
             <button className="glow-hover" onClick={props.buttonClick}>Home</button>
