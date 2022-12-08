@@ -2,6 +2,7 @@ import React from 'react';
 import './MovieInfo.css';
 
 const MovieInfo = (props) => {
+    console.log('props', props)
     let genres = props.movie.genres.map(genre => genre).join(', ')
     let hoursNum = Math.trunc(props.movie.runtime / 60)
     let minNum = props.movie.runtime % 60
