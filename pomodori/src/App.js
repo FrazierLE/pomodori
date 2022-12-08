@@ -9,7 +9,7 @@ class App extends Component {
     super() 
     this.state = {
       movies: [],
-      movie: {},
+      movie: '',
       error: ''
     }
     this.goHome = this.goHome.bind(this)
@@ -22,7 +22,7 @@ class App extends Component {
   })
   .catch(error => {
     console.log(error)
-    this.setState({error: 'Something went wrong. Please try again later'})
+    this.setState({error: 'Something went wrong. Please try again later.'})
   })
   }
 
