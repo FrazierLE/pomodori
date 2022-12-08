@@ -2,28 +2,28 @@ import React, { Component } from 'react'
 import './App.css';
 import Carousel from './Carousel'
 import MovieInfo from './MovieInfo'
+import { fetchData } from './apiCalls'
 
 class App extends Component {
   constructor() {
     super() 
     this.state = {
       movies: [],
-      movie: '',
+      movie: {},
       error: ''
     }
     this.goHome = this.goHome.bind(this)
   }
 
   componentDidMount() {
-    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(response => response.json())
+    fetchData('')
     .then(data => {
-      this.setState({ movies: data.movies})
-    })
-    .catch(error => {
-      console.log(error)
-      this.setState({error: 'Something went wrong. Please try again later'})
-    })
+    this.setState({ movies: data.movies })
+  })
+  .catch(error => {
+    console.log(error)
+    this.setState({error: 'Something went wrong. Please try again later'})
+  })
   }
 
  goHome() {
@@ -31,10 +31,13 @@ class App extends Component {
  }
 
   seeMovie = (id) => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id.toString()}`)
-      .then(response => response.json())
-      .then(data => {
-    this.setState({ movie: data.movie })
+    fetchData(id.toString())
+    .then(data => {
+      this.setState({ movie: data.movie })
+    })
+    .catch(error => {
+      console.log(error)
+      this.setState({error: 'Something went wrong. Please try again later'})
     })
   }
 
