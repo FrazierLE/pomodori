@@ -1,6 +1,7 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 import './Carousel.css'
+import Form from './Form'
 
 function Carousel({movies, seeMovie}) {
   const movieDisplay = movies.map(movie => {
@@ -17,6 +18,7 @@ function Carousel({movies, seeMovie}) {
 
   return(
     <div className='movie-container'>
+        <Form />
         {movieDisplay}
     </div>
   )
