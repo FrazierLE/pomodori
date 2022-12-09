@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className='title'>Pomodori</h1>
+        <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
         {this.state.movie ? <MovieInfo movie={this.state.movie} buttonClick={this.goHome}/> : <Carousel movies={this.state.movies} seeMovie={this.seeMovie}/>}
         {this.state.error && <h2>{this.state.error}</h2>}
       </div>
