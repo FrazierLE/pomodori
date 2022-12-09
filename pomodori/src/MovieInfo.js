@@ -1,53 +1,79 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './MovieInfo.css';
-
-const MovieInfo = (props) => {
-    console.log('props', props)
-    let genres = props.movie.genres.map(genre => genre).join(', ')
-    let hoursNum = Math.trunc(props.movie.runtime / 60)
-    let minNum = props.movie.runtime % 60
-    let officialHoursRuntime = ''
-    let officialMinRuntime = ''
-    if(hoursNum !== 1) {
-        officialHoursRuntime = `${hoursNum} hours`
-    } else {
-        officialHoursRuntime = `${hoursNum} hour`
+import { fetchData } from './apiCalls'
+import { Link } from 'react-router-dom'
+class MovieInfo extends Component {
+  constructor(props) {
+    super(props)
+    this.state ={
+      movie: ''
     }
-    if(minNum !== 1) {
-        officialMinRuntime = `${minNum} minutes`
-    } else {
-        officialMinRuntime = `${minNum} minute`
+  }
+
+  componentDidMount() {
+      fetchData(this.props.id)
+      .then(data => {
+        return this.setState({ movie: data.movie })
+      })
+      .catch(error => {
+        console.log(error)
+        this.setState({error: 'Something went wrong. Please try again later'})
+      })
+  }
+
+  render() {
+    if(Object.keys(this.state.movie).length) {
+      var genres = this.state.movie.genres.map(genre => genre).join(', ')
+      var hoursNum = Math.trunc(this.state.movie.runtime / 60)
+      var minNum = this.state.movie.runtime % 60
+      var officialHoursRuntime = ''
+      var officialMinRuntime = ''
+      if(hoursNum !== 1) {
+          officialHoursRuntime = `${hoursNum} hours`
+      } else {
+          officialHoursRuntime = `${hoursNum} hour`
+      }
+      if(minNum !== 1) {
+          officialMinRuntime = `${minNum} minutes`
+      } else {
+          officialMinRuntime = `${minNum} minute`
+      }
+  
+      var rating = Math.round(this.state.movie.average_rating/10*100)
+      const formatter = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        });
+      var bcost = formatter.format(this.state.movie.budget)
+      var rcost = formatter.format(this.state.movie.revenue)
     }
 
-    let rating = Math.round(props.movie.average_rating/10*100)
-    const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      });
-    let bcost = formatter.format(props.movie.budget)
-    let rcost = formatter.format(props.movie.revenue)
-    return (
-        <section className="movie-info">
-            <section className="all-movie-info">
-                <section className="imgs">
-                    <img style={{display: !props.movie.backdrop_path &&  'none'}}className="bkg-img" src={props.movie.backdrop_path} alt={props.movie.title} />
-                    <img style={{display: !props.movie.poster_path &&  'none'}}className="cover-img" src={props.movie.poster_path} alt={props.movie.title} width="500" height="600" />
-                </section>
-                    <section className="movie-info-txt">
-                        <h1 style={{display: !props.movie.title &&  'none'}} className='movie-title'>{props.movie.title}</h1>
-                        <h2 style={{display: !props.movie.tagline &&  'none'}} className="tagline">"{props.movie.tagline}"</h2>
-                        <h2 style={{display: !props.movie.average_rating &&  'none'}} className="rating">{`🍅 ${rating}% 🍅`}</h2>
-                        <h2 style={{display: !props.movie.runtime &&  'none'}} className="runtime">{`${officialHoursRuntime} ${officialMinRuntime}`}</h2>
-                        <h2 style={{display: !props.movie.release_date &&  'none'}} className="released"> {props.movie.release_date}</h2>
-                        <h2 style={{display: !props.movie.genres.length &&  'none'}} className="genres">{genres}</h2>
-                        <h2 style={{display: !props.movie.budget &&  'none'}}>Budget: {bcost}</h2>
-                        <h2 style={{display: !props.movie.revenue &&  'none'}}>Revenue: {rcost}</h2>
-                        <p style={{display: !props.movie.overview &&  'none'}} className="overview">{props.movie.overview}</p>
-                    </section>
-            </section>
-            <button className="glow-hover" onClick={props.buttonClick}>Home</button>
-        </section>
+      return (
+          <section className="movie-info">
+              <section className="all-movie-info">
+                  <section className="imgs">
+                      <img style={{display: !this.state.movie.backdrop_path &&  'none'}}className="bkg-img" src={this.state.movie.backdrop_path} alt={this.state.movie.title} />
+                      <img style={{display: !this.state.movie.poster_path &&  'none'}}className="cover-img" src={this.state.movie.poster_path} alt={this.state.movie.title} width="500" height="600" />
+                  </section>
+                      <section className="movie-info-txt">
+                          <h1 style={{display: !this.state.movie.title &&  'none'}} className='movie-title'>{this.state.movie.title}</h1>
+                          <h2 style={{display: !this.state.movie.tagline &&  'none'}} className="tagline">"{this.state.movie.tagline}"</h2>
+                          <h2 style={{display: !this.state.movie.average_rating &&  'none'}} className="rating">{`🍅 ${rating}% 🍅`}</h2>
+                          <h2 style={{display: !this.state.movie.runtime &&  'none'}} className="runtime">{`${officialHoursRuntime} ${officialMinRuntime}`}</h2>
+                          <h2 style={{display: !this.state.movie.release_date &&  'none'}} className="released"> {this.state.movie.release_date}</h2>
+                          <h2 className="genres">{genres}</h2>
+                          <h2 style={{display: !this.state.movie.budget &&  'none'}}>Budget: {bcost}</h2>
+                          <h2 style={{display: !this.state.movie.revenue &&  'none'}}>Revenue: {rcost}</h2>
+                          <p style={{display: !this.state.movie.overview &&  'none'}} className="overview">{this.state.movie.overview}</p>
+                      </section>
+              </section>
+
+              <Link to='/'>
+                <button className="glow-hover">Home</button>
+              </Link>
+          </section>
     )
+  }
 }
 
 export default MovieInfo;
