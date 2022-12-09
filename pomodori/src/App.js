@@ -23,7 +23,7 @@ class App extends Component {
   })
   .catch(error => {
     console.log(error)
-    this.setState({error: 'Something went wrong. Please try again later'})
+    this.setState({error: 'Something went wrong. Please try again later.'})
   })
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1 className='title'>Pomodori</h1>
+        <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
          <Route exact path='/' component={() => <Carousel movies={this.state.movies} />}>
          </Route>
 
