@@ -8,7 +8,6 @@ function MovieCard({id, poster, title}) {
       <ul>
         <li className='card'>
           <NavLink to={`${id}`}>
-            {/* <img src={poster} alt={title} width="500" height="600" onClick={() => seeMovie(id)}/> */}
             <img src={poster} alt={title} width="500" height="600" />
           </NavLink>
         </li>

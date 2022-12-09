@@ -67,7 +67,7 @@ class MovieInfo extends Component {
                           <p style={{display: !this.state.movie.overview &&  'none'}} className="overview">{this.state.movie.overview}</p>
                       </section>
               </section>
-              
+
               <Link to='/'>
                 <button className="glow-hover">Home</button>
               </Link>
