@@ -10,7 +10,7 @@ class App extends Component {
     super() 
     this.state = {
       movies: [],
-      movie: '',
+      movie: {},
       error: ''
     }
     this.goHome = this.goHome.bind(this)
@@ -28,7 +28,7 @@ class App extends Component {
   }
 
  goHome() {
-  this.setState({ movie: '' })
+  this.setState({ movie: {} })
  }
 
   render() {
