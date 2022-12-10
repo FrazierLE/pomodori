@@ -48,9 +48,10 @@ class App extends Component {
           }
           }}>
         </Route>
-        <Route component={() => <Error error={this.state.error} />}>
+        <Route component={() => <Error error={this.state.error}/>}>
         </Route>
         </Switch>
+        {this.state.error && <Error error={this.state.error} />}
       </div>
     );
   }

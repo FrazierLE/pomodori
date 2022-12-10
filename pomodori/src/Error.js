@@ -9,7 +9,6 @@ function Error(props) {
         <div>
         <h1>404</h1>
         <h2>Page not found.</h2>
-
         <Link to='/'>
             <button className='glow-hover'>Go Back Home</button>
         </Link>
