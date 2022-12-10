@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 import './Carousel.css'
 import Form from './Form'
 
-function Carousel({movies, seeMovie}) {
+function Carousel({movies, seeMovie, searchMovies}) {
   const movieDisplay = movies.map(movie => {
     return(
       <MovieCard 
@@ -17,9 +17,11 @@ function Carousel({movies, seeMovie}) {
   })
 
   return(
-    <div className='movie-container'>
-        <Form />
-        {movieDisplay}
+    <div>
+      <Form titles={movies} searchMovies={searchMovies}/>
+      {searchMovies && <div className='movie-container'>
+          {movieDisplay}
+      </div> }
     </div>
   )
 }

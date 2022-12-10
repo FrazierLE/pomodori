@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 class Form extends Component {
-  constructor() {
-    super()
+  constructor(titles) {
+    super(titles)
     this.state = {
       search: ''
     }
@@ -11,12 +11,19 @@ class Form extends Component {
 
   handleChange(event) {
     const { name, value} = event.target
+    const filteredSearch = this.props.titles.reduce((acc, movie) => {
+      if(movie.title.toLowerCase().includes(value.toLowerCase())) {
+        acc.push(movie) 
+      }
+      return acc
+    }, [])
+    this.props.searchMovies(filteredSearch)
     this.setState({ [name]: value })
   }
 
   render() {
     return(
-      <div>
+      <div style={{}}>
         <input 
           type='text'
           placeholder='Search'
@@ -24,7 +31,7 @@ class Form extends Component {
           value={this.state.search}
           onChange={this.handleChange}
         />
-        <button>Search</button>
+        {/* <button>Search</button> */}
         <h3>{this.state.search}</h3>
       </div>
     )

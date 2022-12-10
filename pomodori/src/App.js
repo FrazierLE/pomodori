@@ -14,6 +14,7 @@ class App extends Component {
       error: ''
     }
     this.goHome = this.goHome.bind(this)
+    this.searchMovies = this.searchMovies.bind(this)
   }
 
   componentDidMount() {
@@ -31,11 +32,15 @@ class App extends Component {
   this.setState({ movie: {} })
  }
 
+ searchMovies(filteredSearch) {
+  this.setState({movies: filteredSearch})
+ }
+
   render() {
     return (
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
-         <Route exact path='/' component={() => <Carousel movies={this.state.movies} />}>
+         <Route exact path='/' component={() => <Carousel movies={this.state.movies} searchMovies={this.searchMovies}/>}>
          </Route>
 
         <Route exact path='/:id' render={({match}) => {
