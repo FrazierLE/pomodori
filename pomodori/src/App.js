@@ -3,7 +3,8 @@ import './App.css';
 import Carousel from './Carousel'
 import MovieInfo from './MovieInfo'
 import { fetchData } from './apiCalls'
-import { Route, Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import Form from './Form'
 
 class App extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class App extends Component {
     this.state = {
       movies: [],
       movie: {},
+      searchResults: [],
       error: ''
     }
     this.goHome = this.goHome.bind(this)
@@ -20,7 +22,7 @@ class App extends Component {
   componentDidMount() {
     fetchData('')
     .then(data => {
-    this.setState({ movies: data.movies })
+    this.setState({ movies: data.movies, searchResults: data.movies })
   })
   .catch(error => {
     console.log(error)
@@ -29,10 +31,11 @@ class App extends Component {
   }
 
  goHome() {
-  this.setState({ movie: {} })
+  this.setState({ movie: {},  searchResults: []})
  }
 
- searchMovies(filteredSearch) {
+ searchMovies(search) {
+   const filteredSearch = this.state.searchResults.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase()))
   this.setState({movies: filteredSearch})
  }
 
@@ -40,7 +43,9 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
-         <Route exact path='/' component={() => <Carousel movies={this.state.movies} searchMovies={this.searchMovies}/>}>
+        <Form searchMovies={this.searchMovies}/>
+         <Route exact path='/' component={() => <Carousel movies={this.state.movies} 
+            searchMovies={this.searchMovies} />}>
          </Route>
 
         <Route exact path='/:id' render={({match}) => {
