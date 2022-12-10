@@ -7,7 +7,7 @@ function MovieCard({id, poster, title}) {
     <div>
       <ul>
         <li className='card'>
-          <NavLink to={`${id}`}>
+          <NavLink to={`/movies/${id}`}>
             <img src={poster} alt={title} width="500" height="600" />
           </NavLink>
         </li>
