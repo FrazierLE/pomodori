@@ -1,7 +1,6 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 import './Carousel.css'
-// import Form from './Form'
 
 function Carousel({movies, seeMovie}) {
     const movieDisplay = movies.map(movie => {

@@ -4,7 +4,7 @@ describe('Pomodori details page flows', () => {
       method: 'GET',
       fixture: '../fixtures/details.json'
     })
-    cy.visit('http://localhost:3000/')
+    cy.visit('http://localhost:3000/694919')
   })
   it('Should display webpage title', () => {
     cy.contains('Pomodori')
@@ -23,8 +23,8 @@ describe('Pomodori details page flows', () => {
       .and('contain', 0)
       .and('contain', 0)
       .and('contain', '')
-      .and('contain', 82)
-      .and('contain', 6.875)
+      .and('contain', '1 hour 22 minutes')
+      .and('contain', '69%')
     })
   it('Should have a home button', () => {
     cy.get('.glow-hover').click()
