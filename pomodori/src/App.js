@@ -5,8 +5,8 @@ import MovieInfo from './MovieInfo'
 import Error from './Error'
 import { fetchData } from './apiCalls'
 import Form from './Form'
+import FilteredMovies from './FilteredMovies';
 import { Route, Switch } from 'react-router-dom'
-
 
 class App extends Component {
   constructor() {
@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     fetchData('/movies')
     .then(data => {
-    this.setState({ movies: data.movies, searchResults: data.movies })
+    this.setState({ movies: data.movies })
   })
   .catch(error => {
     console.log(error)
@@ -33,12 +33,16 @@ class App extends Component {
   }
 
  goHome() {
-  this.setState({ movie: {},  searchResults: []})
+  this.setState({ movie: {}})
  }
 
  searchMovies(search) {
-   const filteredSearch = this.state.searchResults.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase()))
-  this.setState({movies: filteredSearch})
+  const filteredSearch = this.state.movies.filter(movie => movie.title.toLowerCase().match(search.toLowerCase()))
+  if(filteredSearch.length > 0) {
+    this.setState({searchResults: filteredSearch, error: ''})
+  } else if (filteredSearch.length === 0 && search.length > 0) {
+    this.setState({error: 'Sorry your search did not match any of the movies. Please adjust your search.'})
+  }
  }
 
   render() {
@@ -46,11 +50,10 @@ class App extends Component {
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
         <Form searchMovies={this.searchMovies}/>
-         <Route exact path='/' component={() => <Carousel movies={this.state.movies} 
-            searchMovies={this.searchMovies} />}>
         <Switch>
-         <Route exact path='/' component={() => <Carousel movies={this.state.movies} />}>
-         </Route>
+         < Route exact path='/' render={() => this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults}
+    searchMovies={this.searchMovies}/> : <Carousel movies={this.state.movies}
+    searchMovies={this.searchMovies}/>}/>
         <Route exact path='/movies/:id' render={({match}) => {
           const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
           if (movieToRender) {
@@ -64,6 +67,7 @@ class App extends Component {
         </Route>
         </Switch>
         {this.state.error && <Error error={this.state.error} />}
+
       </div>
     );
   }
