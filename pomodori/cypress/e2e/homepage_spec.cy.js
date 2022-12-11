@@ -6,9 +6,15 @@ describe('Pomodori homepage flows', () => {
     })
     cy.visit('http://localhost:3000/')
   })
+
   it('Should have a home page title', () => {
-    cy.contains('Pomodori')
+    cy.get('.title').contains('Pomodori Putridi')
   }) 
+
+  it('Should have a live search bar', () => {
+    cy.get('input').type('money')
+  })
+
   it('Should display all the movies', () => {
       cy.get('ul').should('have.length', 3)
       cy.get(':nth-child(1) > ul > .card > a > img').should('have.css', 'width', '500px')
@@ -22,5 +28,9 @@ describe('Pomodori homepage flows', () => {
 
       cy.get('li[class=card]').eq(2).find('img').url('https://image.tmdb.org/t/p/original//uOw5JD8IlD546feZ6oxbIjvN66P.jpg')
       cy.get('li[class=card]').eq(2).find('img').should('have.attr', 'alt', 'Rogue')
+  })
+
+  it('Should be able to click on an image', () => {
+    cy.get(':nth-child(1) > ul > .card > a > img').click()
   })
 });

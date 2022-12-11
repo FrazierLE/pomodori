@@ -11,11 +11,17 @@ class Form extends Component {
   handleChange(event) {
     this.setState({ search: event.target.value })
     this.props.searchMovies(this.state.search)
+    console.log('TSEARCH', this.state.search)
+
+  }
+
+  clearInputs() {
+    this.setState({search: ''})
   }
 
   render() {
     return(
-      <div>
+      <div className='searchBar'>
         <input 
           type='text'
           placeholder='Search'

@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 import './Carousel.css'
 
 function Carousel({movies, seeMovie}) {
-    const movieDisplay = movies.map(movie => {
+  const movieDisplay = movies.map(movie => {
       return(
         <MovieCard 
           key={movie.id}

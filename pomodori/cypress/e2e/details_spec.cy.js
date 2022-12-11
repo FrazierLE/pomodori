@@ -7,7 +7,7 @@ describe('Pomodori details page flows', () => {
     cy.visit('http://localhost:3000/694919')
   })
   it('Should display webpage title', () => {
-    cy.contains('Pomodori')
+    cy.contains('Pomodori Putridi')
   });
   it('Should have a backdrop photo', () => {
     cy.get('.imgs').find('img').url('https://image.tmdb.org/t/p/original//pq0JSpwyT2URytdFG0euztQPAyR.jpg')
