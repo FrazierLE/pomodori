@@ -24,16 +24,26 @@ describe('Pomodori homepage flows', () => {
     })
 
     it('Should have a error message when a bad url is given', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {
+            method: 'GET',
+            fixture: '../fixtures/movies.json'
+          })
+
           cy.visit('http://localhost:3000/sketchy/bananas')
           cy.get('h1').should('contain', '404')
           cy.get('h2').should('contain', 'Page not found.')
     })
 
     it('Should have a home button', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', {
+            method: 'GET',
+            fixture: '../fixtures/movies.json'
+          })
+
         cy.visit('http://localhost:3000/sketchy/bananas')
         cy.get('.glow-hover').click()
       })
-  });
+  })
 
 
 
