@@ -32,32 +32,31 @@ class App extends Component {
   }
 
  goHome() {
-  this.setState({ movie: {},  searchResults: []})
+  this.setState({ movie: {}})
  }
 
  searchMovies(search) {
-  const filteredSearch = this.state.movies.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase()))
-  console.log('FILTERED', filteredSearch)
-  this.setState({searchResults: filteredSearch})
-  console.log('APP SEARCH', search)
+  const filteredSearch = this.state.movies.filter(movie => {
+    return movie.title.toLowerCase().match(search.toLowerCase())
+  })
+  console.log('FI', filteredSearch)
+  if(filteredSearch.length > 0) {
+    this.setState({searchResults: filteredSearch})
+  }
+  else {
+    console.log('ERROR', this.state.error)
+    alert(this.state.error)
+  }
  }
 
   render() {
-    let mainDisplay = this.state.searchResults > 0 ? <FilteredMovies searchResults={this.state.searchResults}
-    searchMovies={this.searchMovies}/> : <Carousel movies={this.state.movies}
-    searchMovies={this.searchMovies}/>
     return (
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
         <Form searchMovies={this.searchMovies}/>
-         {/* <Route exact path='/' component={() => <Carousel movies={this.state.movies}
-            searchMovies={this.searchMovies} />}>
-         </Route> */}
-         < Route path='/' render={() => mainDisplay}/>
-         {/* <Route exact path='/' component={() => <FilteredMovies searchResults={this.state.searchResults}
-            searchMovies={this.searchMovies} />}>
-         </Route> */}
-
+         < Route exact path='/' render={() => this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults}
+    searchMovies={this.searchMovies}/> : <Carousel movies={this.state.movies}
+    searchMovies={this.searchMovies}/>}/>
         <Route exact path='/:id' render={({match}) => {
           return <MovieInfo id={match.params.id} buttonClick={this.goHome}/>}}>
         </Route> 

@@ -2,7 +2,7 @@ import React from 'react'
 import MovieCard from './MovieCard'
 
 function FilteredMovies(searchResults, seeMovie) {
-  const filteredDisplay = searchResults.map(movie => {
+  const filteredDisplay = searchResults.searchResults.map(movie => {
     return(
       <MovieCard 
         key={movie.id}
@@ -13,13 +13,13 @@ function FilteredMovies(searchResults, seeMovie) {
       />
     )
   })
-
-return(
+  
+  return(
     <div className='movie-container'>
       {filteredDisplay}
     </div>
 )
 }
 
-
 export default FilteredMovies
+  
