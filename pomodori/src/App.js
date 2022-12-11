@@ -36,16 +36,11 @@ class App extends Component {
  }
 
  searchMovies(search) {
-  const filteredSearch = this.state.movies.filter(movie => {
-    return movie.title.toLowerCase().match(search.toLowerCase())
-  })
-  console.log('FI', filteredSearch)
+  const filteredSearch = this.state.movies.filter(movie => movie.title.toLowerCase().match(search.toLowerCase()))
   if(filteredSearch.length > 0) {
-    this.setState({searchResults: filteredSearch})
-  }
-  else {
-    console.log('ERROR', this.state.error)
-    alert(this.state.error)
+    this.setState({searchResults: filteredSearch, error: ''})
+  } else if (filteredSearch.length === 0 && search.length > 0) {
+    this.setState({error: 'Sorry your search did not match any of the movies. Please adjust your search.'})
   }
  }
 
