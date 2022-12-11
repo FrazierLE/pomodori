@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import './App.css';
 import Carousel from './Carousel'
 import MovieInfo from './MovieInfo'
+import Error from './Error'
 import { fetchData } from './apiCalls'
-import { Route } from 'react-router-dom'
 import Form from './Form'
+import { Route, Switch } from 'react-router-dom'
+
 
 class App extends Component {
   constructor() {
@@ -20,7 +22,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetchData('')
+    fetchData('/movies')
     .then(data => {
     this.setState({ movies: data.movies, searchResults: data.movies })
   })
@@ -46,15 +48,27 @@ class App extends Component {
         <Form searchMovies={this.searchMovies}/>
          <Route exact path='/' component={() => <Carousel movies={this.state.movies} 
             searchMovies={this.searchMovies} />}>
+        <Switch>
+         <Route exact path='/' component={() => <Carousel movies={this.state.movies} />}>
          </Route>
-
-        <Route exact path='/:id' render={({match}) => {
-          return <MovieInfo id={match.params.id} buttonClick={this.goHome}/>}}>
-        </Route> 
-        {this.state.error && <h2>{this.state.error}</h2>}
+        <Route exact path='/movies/:id' render={({match}) => {
+          const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
+          if (movieToRender) {
+            return <MovieInfo id={movieToRender.id} buttonClick={this.goHome}/>
+          } else {
+            return <Error error={this.state.error} />
+          }
+          }}>
+        </Route>
+        <Route component={() => <Error error={this.state.error}/>}>
+        </Route>
+        </Switch>
+        {this.state.error && <Error error={this.state.error} />}
       </div>
     );
   }
 }
 
 export default App;
+
+
