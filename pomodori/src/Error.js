@@ -3,7 +3,6 @@ import './Error.css'
 import { Link } from 'react-router-dom'
 
 function Error(props) {
-    console.log('props', props)
     if(!props.error) {
     return (
         <div>
