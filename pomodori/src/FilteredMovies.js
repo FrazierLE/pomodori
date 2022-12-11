@@ -1,5 +1,6 @@
 import React from 'react'
 import MovieCard from './MovieCard'
+import PropTypes from 'prop-types';
 
 function FilteredMovies(searchResults, seeMovie) {
   const filteredDisplay = searchResults.searchResults.map(movie => {
@@ -23,3 +24,7 @@ function FilteredMovies(searchResults, seeMovie) {
 
 export default FilteredMovies
   
+FilteredMovies.propTypes = {
+  searchResults: PropTypes.array,
+  seeMovie: PropTypes.func
+}

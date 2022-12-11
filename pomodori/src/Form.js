@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 class Form extends Component {
   constructor(titles) {
     super(titles)
@@ -13,10 +14,6 @@ class Form extends Component {
     this.setState({ search: value })
     this.props.searchMovies(event.target.value)
   }
-
-  // clearInput() {
-  //   this.setState({search: ''})
-  // }
 
   render() {
     return(
@@ -34,3 +31,7 @@ class Form extends Component {
 }
 
 export default Form
+
+Form.propTypes = {
+  titles: PropTypes.array
+}
