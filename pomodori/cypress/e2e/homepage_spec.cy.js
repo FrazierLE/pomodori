@@ -8,11 +8,11 @@ describe('Pomodori homepage flows', () => {
   })
 
   it('Should have a home page title', () => {
-    cy.get('.title').contains('Pomodori Putridi')
+    cy.get('.title').contains('🍅 Pomodori Putridi 🍅')
   }) 
 
   it('Should have a live search bar', () => {
-    cy.get('input').type('money')
+    cy.get('input').type('woman')
   })
 
   it('Should display all the movies', () => {
@@ -20,17 +20,18 @@ describe('Pomodori homepage flows', () => {
       cy.get(':nth-child(1) > ul > .card > a > img').should('have.css', 'width', '500px')
       cy.get(':nth-child(1) > ul > .card > a > img').should('have.css', 'height', '600px')
 
-      cy.get('li[class=card]').eq(0).find('img').url('https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg')
-      cy.get('li[class=card]').eq(0).find('img').should('have.attr', 'alt', 'Money Plane')
+      cy.get('li[class=card]').eq(0).find('img').url('https://image.tmdb.org/t/p/original//pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg')
+      cy.get('li[class=card]').eq(0).find('img').should('have.attr', 'alt', 'Black Adam')
 
-      cy.get('li[class=card]').eq(1).find('img').url('https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg')
-      cy.get('li[class=card]').eq(1).find('img').should('have.attr', 'alt', 'Mulan')
+      cy.get('li[class=card]').eq(1).find('img').url('https://image.tmdb.org/t/p/original//438QXt1E3WJWb3PqNniK0tAE5c1.jpg')
+      cy.get('li[class=card]').eq(1).find('img').should('have.attr', 'alt', 'The Woman King')
 
-      cy.get('li[class=card]').eq(2).find('img').url('https://image.tmdb.org/t/p/original//uOw5JD8IlD546feZ6oxbIjvN66P.jpg')
-      cy.get('li[class=card]').eq(2).find('img').should('have.attr', 'alt', 'Rogue')
+      cy.get('li[class=card]').eq(2).find('img').url('https://image.tmdb.org/t/p/original//g4yJTzMtOBUTAR2Qnmj8TYIcFVq.jpg')
+      cy.get('li[class=card]').eq(2).find('img').should('have.attr', 'alt', 'R.I.P.D. 2: Rise of the Damned')
   })
 
   it('Should be able to click on an image', () => {
     cy.get(':nth-child(1) > ul > .card > a > img').click()
+    cy.location("pathname").should("eq", "/movies/436270")
   })
 });
