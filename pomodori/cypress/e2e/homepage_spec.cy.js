@@ -17,8 +17,8 @@ describe('Pomodori homepage flows', () => {
 
   it('Should display all the movies', () => {
       cy.get('ul').should('have.length', 3)
-      cy.get(':nth-child(1) > ul > .card > a > img').should('have.css', 'width', '500px')
-      cy.get(':nth-child(1) > ul > .card > a > img').should('have.css', 'height', '600px')
+      cy.get(':nth-child(1) > ul > .card > a > .glow-hover > img').should('have.css', 'width', '500px')
+      cy.get(':nth-child(1) > ul > .card > a > .glow-hover > img').should('have.css', 'height', '600px')
 
       cy.get('li[class=card]').eq(0).find('img').url('https://image.tmdb.org/t/p/original//pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg')
       cy.get('li[class=card]').eq(0).find('img').should('have.attr', 'alt', 'Black Adam')
@@ -31,7 +31,7 @@ describe('Pomodori homepage flows', () => {
   })
 
   it('Should be able to click on an image', () => {
-    cy.get(':nth-child(1) > ul > .card > a > img').click()
+    cy.get(':nth-child(1) > ul > .card > a > .glow-hover > img').click()
     cy.location("pathname").should("eq", "/movies/436270")
   })
 });
