@@ -20,7 +20,7 @@ function MovieCard({id, poster, title}) {
 export default MovieCard
 
 MovieCard.propTypes = {
-  title: PropTypes.number,
+  id: PropTypes.number,
   poster: PropTypes.string,
   title: PropTypes.string
 }
