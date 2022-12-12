@@ -18,6 +18,11 @@ Pomodori Putridi is a movie application that was created using React and tested 
 
 ## Features
 
+![Brief features gif](https://media.giphy.com/media/PMgcGmbT8RmpdvdNR4/giphy.gif)
+
+![Brief features gif](https://media.giphy.com/media/CIfvmSAx4V2IpasF6O/giphy.gif)
+
+
 ## Technologies Used
 * React
 * React Router
@@ -29,8 +34,8 @@ Pomodori Putridi is a movie application that was created using React and tested 
 * Fetch API
 
 ## Contributors
-Courtney Lippman: [c.lippman](https://github.com/Courtney-Lippman)
-Lauren Frazier: [FrazierLE](https://github.com/FrazierLE?tab=repositories) 
+* Courtney Lippman: [c.lippman](https://github.com/Courtney-Lippman)
+* Lauren Frazier: [FrazierLE](https://github.com/FrazierLE?tab=repositories) 
 
 ## Wins
 * Creating a live search bar to filter movies 
