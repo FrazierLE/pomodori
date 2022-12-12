@@ -49,6 +49,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
+        {this.state.error && <Error error={this.state.error} />}
         <Switch>
          < Route exact path='/' render={() => {
             return (
@@ -68,7 +69,6 @@ class App extends Component {
         />
         <Route component={() => <Error error={this.state.error}/>} />
       </Switch>
-        {this.state.error && <Error error={this.state.error} />}
       </div>
     );
   }

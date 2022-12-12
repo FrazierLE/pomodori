@@ -68,7 +68,9 @@ class MovieInfo extends Component {
                           <h2 className="genres">{genres}</h2>
                           <h2 style={{display: !this.state.movie.budget &&  'none'}}>Budget: {bcost}</h2>
                           <h2 style={{display: !this.state.movie.revenue &&  'none'}}>Revenue: {rcost}</h2>
+                          <div className='overview-border'>
                           <p style={{display: !this.state.movie.overview &&  'none'}} className="overview">{this.state.movie.overview}</p>
+                          </div>
                       </section>
               </section>
           </section>
