@@ -1,7 +1,7 @@
 # 🍅 Pomodori Putridi 🍅
 
 ## Overview
-Pomodori Putridi is a 
+Pomodori Putridi is a movie application that was created using React and tested with Cypress. Users are able to scroll through site, filter movies with the use of a live search bar, and click into a specific movie to get movie details like a movie rating or movie budget. 
 
 ## Installation Instructions
 1. Clone down [this repository](https://github.com/FrazierLE/pomodori)
@@ -40,3 +40,4 @@ Lauren Frazier: [FrazierLE](https://github.com/FrazierLE?tab=repositories)
 # Future Extensions
 * Creating a login page for each user to be able to save movies to a watchlist 
 * Allow each user to add a review and/or rating
+* Add trailers to each movie details page 
