@@ -23,6 +23,7 @@ class Form extends Component {
           name='search'
           value={this.state.search}
           onChange={this.handleChange}
+          className='search-input'
         />
       </div>
     )

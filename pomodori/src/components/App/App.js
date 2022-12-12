@@ -41,7 +41,7 @@ class App extends Component {
   if(filteredSearch.length > 0) {
     this.setState({searchResults: filteredSearch, error: ''})
   } else if (filteredSearch.length === 0 && search.length > 0) {
-    this.setState({error: 'Sorry your search did not match any of the movies. Please adjust your search.'})
+    this.setState({error: 'Sorry your search did not match any of the movies. Please adjust your search. Movies that are closest to your search are displayed below.'})
   }
  }
 
