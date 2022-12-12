@@ -49,11 +49,15 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
-        <Form searchMovies={this.searchMovies}/>
         <Switch>
-         < Route exact path='/' render={() => this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults}
-    searchMovies={this.searchMovies}/> : <Carousel movies={this.state.movies}
-    searchMovies={this.searchMovies}/>}/>
+         < Route exact path='/' render={() => {
+            return (
+            <div>
+              <Form searchMovies={this.searchMovies}/>
+              {this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults} searchMovies={this.searchMovies} /> 
+              : <Carousel movies={this.state.movies} searchMovies={this.searchMovies} />}
+            </div>)
+         }} />
         <Route exact path='/movies/:id' render={({match}) => {
           const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
           if (movieToRender) {
@@ -67,12 +71,9 @@ class App extends Component {
         </Route>
         </Switch>
         {this.state.error && <Error error={this.state.error} />}
-
       </div>
     );
   }
 }
 
 export default App;
-
-
