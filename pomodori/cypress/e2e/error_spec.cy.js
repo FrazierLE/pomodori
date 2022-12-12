@@ -43,8 +43,16 @@ describe('Pomodori homepage flows', () => {
         cy.visit('http://localhost:3000/sketchy/bananas')
         cy.get('.glow-hover').click()
       })
+
+      it('Should show an error message when there are no results for a given search', () => {
+        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2', {
+            method: 'GET',
+            fixture: '../fixtures/movies.json'
+          })
+
+        cy.visit('http://localhost:3000/')
+        
+        cy.get('.search-input').eq(0).type("Banana")
+        cy.get('h1').should('contain', 'Sorry your search did not match any of the movies. Please adjust your search. Movies that are closest to your search are displayed below.')
   })
-
-
-
-
+});

@@ -41,7 +41,7 @@ class App extends Component {
   if(filteredSearch.length > 0) {
     this.setState({searchResults: filteredSearch, error: ''})
   } else if (filteredSearch.length === 0 && search.length > 0) {
-    this.setState({error: 'Sorry your search did not match any of the movies. Please adjust your search.'})
+    this.setState({error: 'Sorry your search did not match any of the movies. Please adjust your search. Movies that are closest to your search are displayed below.'})
   }
  }
 
@@ -50,6 +50,7 @@ class App extends Component {
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
         <Form searchMovies={this.searchMovies}/>
+        {this.state.error && <Error error={this.state.error} />}
         <Switch>
          < Route exact path='/' render={() => this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults}
     searchMovies={this.searchMovies}/> : <Carousel movies={this.state.movies}
@@ -66,7 +67,6 @@ class App extends Component {
         <Route component={() => <Error error={this.state.error}/>}>
         </Route>
         </Switch>
-        {this.state.error && <Error error={this.state.error} />}
 
       </div>
     );
