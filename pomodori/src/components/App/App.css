@@ -6,3 +6,16 @@
   font-size: 4vh;
 }
 
+input {
+  width: 15vw;
+  height: 4vh;
+  font-size: 2vh;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
+button {
+  font-size: 3vh;
+  padding: 10px 50px;
+}

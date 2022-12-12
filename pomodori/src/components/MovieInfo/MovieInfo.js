@@ -51,6 +51,9 @@ class MovieInfo extends Component {
 
       return (
           <section className="movie-info">
+              <Link to='/'>
+                <button className="glow-hover" onClick={this.props.buttonClick}>Home</button>
+              </Link>
               <section className="all-movie-info">
                   <section className="imgs">
                       <img style={{display: !this.state.movie.backdrop_path &&  'none'}}className="bkg-img" src={this.state.movie.backdrop_path} alt={this.state.movie.title} />
@@ -68,10 +71,6 @@ class MovieInfo extends Component {
                           <p style={{display: !this.state.movie.overview &&  'none'}} className="overview">{this.state.movie.overview}</p>
                       </section>
               </section>
-
-              <Link to='/'>
-                <button className="glow-hover" onClick={this.props.buttonClick}>Home</button>
-              </Link>
           </section>
     )
   }
