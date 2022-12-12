@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './App.css';
-import Carousel from './Carousel'
-import MovieInfo from './MovieInfo'
-import Error from './Error'
-import { fetchData } from './apiCalls'
-import Form from './Form'
-import FilteredMovies from './FilteredMovies';
+import Carousel from '../Carousel/Carousel'
+import MovieInfo from '../MovieInfo/MovieInfo'
+import Error from '../Error/Error'
+import { fetchData } from '../../apiCalls'
+import Form from '../Form/Form'
+import FilteredMovies from '../FilteredMovies/FilteredMovies';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {

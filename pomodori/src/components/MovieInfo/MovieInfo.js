@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MovieInfo.css';
-import { fetchData } from './apiCalls';
+import { fetchData } from '../../apiCalls'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 class MovieInfo extends Component {
