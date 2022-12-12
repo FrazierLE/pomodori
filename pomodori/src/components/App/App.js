@@ -57,18 +57,17 @@ class App extends Component {
               {this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults} searchMovies={this.searchMovies} /> 
               : <Carousel movies={this.state.movies} searchMovies={this.searchMovies} />}
             </div>)}} />
-        <Route exact path='/movies/:id' render={({match}) => {
+        < Route exact path='/movies/:id' render={({match}) => {
           const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
           if (movieToRender) {
             return <MovieInfo id={movieToRender.id} buttonClick={this.goHome} />
           } else {
             return <Error error={this.state.error} />
           }
-          }}>
-        </Route>
-        <Route component={() => <Error error={this.state.error}/>}>
-        </Route>
-        </Switch>
+          }}
+        />
+        <Route component={() => <Error error={this.state.error}/>} />
+      </Switch>
         {this.state.error && <Error error={this.state.error} />}
       </div>
     );
