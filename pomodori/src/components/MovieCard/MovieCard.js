@@ -9,7 +9,9 @@ function MovieCard({id, poster, title}) {
       <ul>
         <li className='card'>
           <Link to={`/movies/${id}`}>
+            <div className='glow-hover'>
             <img src={poster} alt={title} width="500" height="600" />
+            </div>
           </Link>
         </li>
       </ul>
