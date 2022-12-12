@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './App.css';
-import Carousel from './Carousel'
-import MovieInfo from './MovieInfo'
-import Error from './Error'
-import { fetchData } from './apiCalls'
-import Form from './Form'
-import FilteredMovies from './FilteredMovies';
+import Carousel from '../Carousel/Carousel'
+import MovieInfo from '../MovieInfo/MovieInfo'
+import Error from '../Error/Error'
+import { fetchData } from '../../apiCalls'
+import Form from '../Form/Form'
+import FilteredMovies from '../FilteredMovies/FilteredMovies';
 import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
   }
 
  goHome() {
-  this.setState({ movie: {}})
+  this.setState({ movie: {}, searchResults: []})
  }
 
  searchMovies(search) {
@@ -49,30 +49,29 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='title'> 🍅 Pomodori Putridi 🍅</h1>
-        <Form searchMovies={this.searchMovies}/>
-        {this.state.error && <Error error={this.state.error} />}
         <Switch>
-         < Route exact path='/' render={() => this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults}
-    searchMovies={this.searchMovies}/> : <Carousel movies={this.state.movies}
-    searchMovies={this.searchMovies}/>}/>
-        <Route exact path='/movies/:id' render={({match}) => {
+         < Route exact path='/' render={() => {
+            return (
+            <div>
+              <Form searchMovies={this.searchMovies}/>
+              {this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults} searchMovies={this.searchMovies} /> 
+              : <Carousel movies={this.state.movies} searchMovies={this.searchMovies} />}
+            </div>)}} />
+        < Route exact path='/movies/:id' render={({match}) => {
           const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
           if (movieToRender) {
-            return <MovieInfo id={movieToRender.id} buttonClick={this.goHome}/>
+            return <MovieInfo id={movieToRender.id} buttonClick={this.goHome} />
           } else {
             return <Error error={this.state.error} />
           }
-          }}>
-        </Route>
-        <Route component={() => <Error error={this.state.error}/>}>
-        </Route>
-        </Switch>
-
+          }}
+        />
+        <Route component={() => <Error error={this.state.error}/>} />
+      </Switch>
+        {this.state.error && <Error error={this.state.error} />}
       </div>
     );
   }
 }
 
 export default App;
-
-

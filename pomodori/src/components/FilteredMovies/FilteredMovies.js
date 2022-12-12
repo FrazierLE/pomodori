@@ -1,8 +1,8 @@
 import React from 'react'
-import MovieCard from './MovieCard'
+import MovieCard from '../MovieCard/MovieCard'
 import PropTypes from 'prop-types';
 
-function FilteredMovies(searchResults, seeMovie) {
+function FilteredMovies(searchResults) {
   const filteredDisplay = searchResults.searchResults.map(movie => {
     return(
       <MovieCard 
@@ -10,7 +10,6 @@ function FilteredMovies(searchResults, seeMovie) {
         id={movie.id}
         poster={movie.poster_path}
         title={movie.title}
-        seeMovie={seeMovie}
       />
     )
   })
@@ -25,6 +24,5 @@ function FilteredMovies(searchResults, seeMovie) {
 export default FilteredMovies
   
 FilteredMovies.propTypes = {
-  searchResults: PropTypes.array,
-  seeMovie: PropTypes.func
+  searchResults: PropTypes.array.isRequired
 }

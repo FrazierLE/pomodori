@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
 class Form extends Component {
-  constructor(titles) {
-    super(titles)
+  constructor() {
+    super()
     this.state = {
       search: ''
     }
@@ -32,7 +31,3 @@ class Form extends Component {
 }
 
 export default Form
-
-Form.propTypes = {
-  titles: PropTypes.array
-}

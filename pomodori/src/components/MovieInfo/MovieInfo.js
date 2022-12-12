@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MovieInfo.css';
-import { fetchData } from './apiCalls';
+import { fetchData } from '../../apiCalls'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 class MovieInfo extends Component {
@@ -14,7 +14,7 @@ class MovieInfo extends Component {
   componentDidMount() {
       fetchData(`/movies/${this.props.id}`)
       .then(data => {
-        return this.setState({ movie: data.movie })
+        return this.setState({ movie: data.movie})
       })
       .catch(error => {
         console.log(error)
@@ -70,7 +70,7 @@ class MovieInfo extends Component {
               </section>
 
               <Link to='/'>
-                <button className="glow-hover">Home</button>
+                <button className="glow-hover" onClick={this.props.buttonClick}>Home</button>
               </Link>
           </section>
     )
@@ -80,6 +80,6 @@ class MovieInfo extends Component {
 export default MovieInfo;
 
 MovieInfo.propTypes = {
-  id: PropTypes.number,
-  buttonClick: PropTypes.func
+  id: PropTypes.number.isRequired,
+  buttonClick: PropTypes.func.isRequired
 }
