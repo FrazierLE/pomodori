@@ -21,5 +21,5 @@ function Error(props) {
 export default Error
 
 Error.propTypes = {
-  props: PropTypes.object
+  props: PropTypes.string
 }

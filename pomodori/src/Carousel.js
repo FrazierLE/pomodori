@@ -3,7 +3,7 @@ import MovieCard from './MovieCard'
 import './Carousel.css'
 import PropTypes from 'prop-types';
 
-function Carousel({movies, seeMovie}) {
+function Carousel({movies}) {
     const movieDisplay = movies.map(movie => {
         return(
           <MovieCard 
@@ -11,7 +11,6 @@ function Carousel({movies, seeMovie}) {
             id={movie.id}
             poster={movie.poster_path}
             title={movie.title}
-            seeMovie={seeMovie}
           />
         )
       })
@@ -26,6 +25,5 @@ function Carousel({movies, seeMovie}) {
 export default Carousel
 
 Carousel.propTypes = {
-  movies: PropTypes.array,
-  seeMovie: PropTypes.func
+  movies: PropTypes.array.isRequired
 }

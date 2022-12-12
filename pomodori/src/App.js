@@ -33,7 +33,7 @@ class App extends Component {
   }
 
  goHome() {
-  this.setState({ movie: {}})
+  this.setState({ movie: {}, searchResults: []})
  }
 
  searchMovies(search) {
@@ -56,12 +56,11 @@ class App extends Component {
               <Form searchMovies={this.searchMovies}/>
               {this.state.searchResults.length > 0 ? <FilteredMovies searchResults={this.state.searchResults} searchMovies={this.searchMovies} /> 
               : <Carousel movies={this.state.movies} searchMovies={this.searchMovies} />}
-            </div>)
-         }} />
+            </div>)}} />
         <Route exact path='/movies/:id' render={({match}) => {
           const movieToRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
           if (movieToRender) {
-            return <MovieInfo id={movieToRender.id} buttonClick={this.goHome}/>
+            return <MovieInfo id={movieToRender.id} buttonClick={this.goHome} />
           } else {
             return <Error error={this.state.error} />
           }
