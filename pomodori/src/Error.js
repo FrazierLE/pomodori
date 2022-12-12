@@ -1,7 +1,7 @@
 import React from 'react'
 import './Error.css'
 import { Link } from 'react-router-dom'
-
+import PropTypes from 'prop-types';
 function Error(props) {
     if(!props.error) {
     return (
@@ -19,3 +19,7 @@ function Error(props) {
 }
 
 export default Error
+
+Error.propTypes = {
+  props: PropTypes.object
+}

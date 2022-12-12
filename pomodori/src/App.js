@@ -6,7 +6,7 @@ import Error from './Error'
 import { fetchData } from './apiCalls'
 import Form from './Form'
 import FilteredMovies from './FilteredMovies';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor() {

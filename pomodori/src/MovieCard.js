@@ -1,6 +1,7 @@
 import React from 'react'
 import './MovieCard.css'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 function MovieCard({id, poster, title}) {
   return(
@@ -17,3 +18,9 @@ function MovieCard({id, poster, title}) {
 }
 
 export default MovieCard
+
+MovieCard.propTypes = {
+  id: PropTypes.number,
+  poster: PropTypes.string,
+  title: PropTypes.string
+}

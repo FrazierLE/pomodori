@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './MovieInfo.css';
-import { fetchData } from './apiCalls'
-import { Link } from 'react-router-dom'
+import { fetchData } from './apiCalls';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 class MovieInfo extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state ={
       movie: {}
     }
@@ -78,3 +79,7 @@ class MovieInfo extends Component {
 
 export default MovieInfo;
 
+MovieInfo.propTypes = {
+  id: PropTypes.number,
+  buttonClick: PropTypes.func
+}

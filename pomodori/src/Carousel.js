@@ -1,6 +1,7 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 import './Carousel.css'
+import PropTypes from 'prop-types';
 
 function Carousel({movies, seeMovie}) {
     const movieDisplay = movies.map(movie => {
@@ -14,7 +15,6 @@ function Carousel({movies, seeMovie}) {
           />
         )
       })
-  // }
 
   return(
       <div className='movie-container'>
@@ -25,3 +25,7 @@ function Carousel({movies, seeMovie}) {
 
 export default Carousel
 
+Carousel.propTypes = {
+  movies: PropTypes.array,
+  seeMovie: PropTypes.func
+}
