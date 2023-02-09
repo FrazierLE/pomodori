@@ -10,6 +10,9 @@ Pomodori Putridi is a movie application that was created using React and tested 
 1. Open up http://localhost:3000/ in your browswer
 1. `control + c` in your terminal to stop server
 
+## Deployed Link
+[Pomodori Putridi](https://pomodori-three.vercel.app)
+
 ## Project Goals
 * Gain competency with React fundamentals
 * Learn how to test React components & asynchronous JS
